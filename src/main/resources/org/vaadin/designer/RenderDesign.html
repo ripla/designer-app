@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;JAVA_SOURCES_ROOT&quot;:&quot;../../src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+  <meta name="vaadin-version" content="8.0.0">
+ </head>
+ <body>
+  <vaadin-vertical-layout spacing="false" size-full margin="false">
+   <vaadin-horizontal-layout width-full margin-left margin-right>
+    <vaadin-label style-name="h1" width-full plain-text :expand="0.75">
+      the Design Rendering Machine
+    </vaadin-label>
+    <vaadin-vertical-layout :expand="0.25">
+     <vaadin-upload button-caption="Set Design" _id="designUpload"></vaadin-upload>
+     <vaadin-upload button-caption="Set Theme" _id="themeUpload"></vaadin-upload>
+    </vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width-full margin-left margin-right margin-bottom>
+    <vaadin-label style-name="colored bold" plain-text>
+      Current Design:
+    </vaadin-label>
+    <vaadin-label width-full plain-text _id="currentDesign" :expand>
+      &lt;none&gt;
+    </vaadin-label>
+    <vaadin-label style-name="colored bold" plain-text>
+      Current Theme:
+    </vaadin-label>
+    <vaadin-label width-full plain-text _id="currentTheme" :expand>
+      Valo
+    </vaadin-label>
+   </vaadin-horizontal-layout>
+   <vaadin-panel style-name="borderless" size-full _id="content" :expand></vaadin-panel>
+  </vaadin-vertical-layout>
+ </body>
+</html>
