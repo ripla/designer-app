@@ -19,10 +19,7 @@ apply plugin: 'org.springframework.boot'
 jar {
 	baseName = 'designer-app'
 	version = '0.0.1-SNAPSHOT'
-}
-
-springBoot {
-	executable = true
+	archiveName 'designer-app.jar'
 }
 
 sourceCompatibility = 1.8
@@ -41,4 +38,10 @@ dependencyManagement {
 	imports {
 		mavenBom "com.vaadin:vaadin-bom:8.0.0"
 	}
+}
+
+task dist(type: Copy) {
+	from createJar // shortcut for createJar.outputs.files
+	from "src/electron"	
+	into "build/electron/"
 }
