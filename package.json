@@ -4,12 +4,13 @@
   "description": "App for rendering Vaadin designs",
   "author": "Risto Yrjänä",
   "license": "Apache-2.0",
-  "main": "main.js",
   "scripts": {
-    "prestart": "./gradlew build",
-    "start": "electron main.js"
+    "start": "electron build/electron/main.js",
+    "package": "electron-packager build/electron --out=build/app --overwrite"
   },
   "devDependencies": {
-    "electron": "^1.4.15"
+    "electron": "^1.4.15",
+    "electron-packager": "^8.5.2",
+    "request-promise": "^4.1.1"
   }
 }

@@ -40,8 +40,8 @@ dependencyManagement {
 	}
 }
 
-task dist(type: Copy) {
-	from createJar // shortcut for createJar.outputs.files
-	from "src/electron"	
+task electron(type: Copy, dependsOn: ':build') {
+	from jar.archivePath
+	from "src/electron"
 	into "build/electron/"
 }

@@ -1,0 +1,8 @@
+{
+  "name": "designer-app",
+  "version": "0.1.0",
+  "description": "App for rendering Vaadin designs",
+  "author": "Risto Yrjänä",
+  "license": "Apache-2.0",
+  "main": "main.js"
+}

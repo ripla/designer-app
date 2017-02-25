@@ -7,6 +7,9 @@ const url = require('url')
 let win;
 let serverProcess;
 
+const appUrl = 'http://localhost:8080';
+const requestPromise = require('request-promise');
+
 function startJava() {
     // For our Java app, we want to spawn it and run in background
     const spawn = require('child_process').spawn;
@@ -26,12 +29,7 @@ function createWindow() {
         title: 'Vaadin Designer App'
     });
 
-    // and load the index.html of the app.
-    win.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+    win.loadURL(appUrl);
 
     // Open the DevTools.
     // win.webContents.openDevTools()
@@ -45,12 +43,24 @@ function createWindow() {
     })
 }
 
+function startUI() {
+    requestPromise(appUrl)
+        .then(function (htmlString) {
+            console.log('Server started!');
+            createWindow();
+        })
+        .catch(function (err) {
+            console.log('Waiting for the server start...');
+            setTimeout(startUI, 500);
+        });
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
     startJava();
-    createWindow();
+    startUI();
 });
 
 // Quit when all windows are closed.
