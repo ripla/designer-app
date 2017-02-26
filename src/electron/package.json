@@ -4,5 +4,14 @@
   "description": "App for rendering Vaadin designs",
   "author": "Risto Yrjänä",
   "license": "Apache-2.0",
-  "main": "main.js"
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "package": "electron-packager . --out=../app --overwrite --no-prune"
+  },
+  "devDependencies": {
+    "electron-packager": "^8.5.2",
+    "electron": "^1.4.15",
+    "request-promise": "^4.1.1"
+  }
 }

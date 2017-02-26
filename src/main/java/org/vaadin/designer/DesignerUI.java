@@ -10,7 +10,6 @@ import org.springframework.boot.ApplicationArguments;
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.declarative.Design;
 
@@ -36,10 +35,8 @@ public class DesignerUI extends UI {
     private void setContentFromCommandLineParam() {
         final String designFile = args.getOptionValues("designFile").get(0);
         try {
-            final Component designRoot = Design
-                    .read(Files.newInputStream(Paths.get(designFile)));
-            System.out.println(designRoot);
-            setContent(designRoot);
+            setContent(
+                    Design.read(Files.newInputStream(Paths.get(designFile))));
         } catch (IOException e) {
             e.printStackTrace();
         }

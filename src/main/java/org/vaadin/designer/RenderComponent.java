@@ -64,7 +64,6 @@ public class RenderComponent extends RenderDesign {
                     getDesignerAppServlet().getCurrentSessionThemeFile()
                             .getName());
         }
-
     }
 
     private void readDesign(File designFile) {

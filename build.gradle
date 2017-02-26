@@ -11,6 +11,10 @@ buildscript {
 	}
 }
 
+plugins {
+	id "com.moowork.node" version "1.1.1"
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -40,8 +44,19 @@ dependencyManagement {
 	}
 }
 
-task electron(type: Copy, dependsOn: ':build') {
+node {
+    npmWorkDir = file("${project.buildDir}/electron")
+	nodeModulesDir = file("${project.buildDir}/electron")
+}
+
+task copyForElectron(type: Copy, dependsOn: ':build') {
 	from jar.archivePath
 	from "src/electron"
 	into "build/electron/"
 }
+
+task packageElectron(type: NpmTask) {
+	args = ['run-script', 'package']
+}
+
+task electron(dependsOn: [':copyForElectron', ':npmInstall', ':packageElectron'])
