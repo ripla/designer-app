@@ -5,8 +5,8 @@ This is a quick prototype of a Vaadin app that simply renders Designs with a spe
 ## How to use
 
  * To try out just the Vaadin application, run `./gradlew bootRun`
- * To run as an Electron app, run `./gradlew electron`, `npm install`, `npm start`
- * To package as an Electron app, run `./gradlew electron`, `npm install`, `npm run-script package`
+ * To run as an Electron app, run `./gradlew electron` followed by `npm start` in the `build/electron` directory
+ * To package as an Electron app, run `./gradlew electronPackage`. The app is packaged to `build/app`
  
 ## Inspiration & Credit
 

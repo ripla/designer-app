@@ -49,14 +49,16 @@ node {
 	nodeModulesDir = file("${project.buildDir}/electron")
 }
 
-task copyForElectron(type: Copy, dependsOn: ':build') {
+task copyElectron(type: Copy, dependsOn: ':build') {
 	from jar.archivePath
 	from "src/electron"
 	into "build/electron/"
 }
 
-task packageElectron(type: NpmTask) {
-	args = ['run-script', 'package']
+task electron(dependsOn: [':copyElectron', ':npmInstall']) {
+
 }
 
-task electron(dependsOn: [':copyForElectron', ':npmInstall', ':packageElectron'])
+task electronPackage(type: NpmTask, dependsOn: ':electron') {
+	args = ['run-script', 'package']
+}
